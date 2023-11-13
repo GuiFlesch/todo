@@ -58,7 +58,8 @@ export default function Modal({ isOpen, aoFechar, aoCardCadastrado }: ModalProps
         >
           <form action="" onSubmit={aoSalvar}>
             <div className="flex w-full mx-auto">
-              <textarea 
+              <textarea
+                value={texto}
                 className="flex mx-auto text-emerald-950 mt-5 h-32 w-[90%] bg-gray-100 outline-none rounded-lg"
                 onChange={(e) => setTexto(e.target.value)}></textarea>
                 
@@ -79,6 +80,7 @@ export default function Modal({ isOpen, aoFechar, aoCardCadastrado }: ModalProps
             </div>
             <div className="flex mx-auto w-[90%] gap-2">
               <select
+              value={tempo}
                 className="flex w-full mx-auto rounded-md py-1 mb-2"
                 name=""
                 id=""
@@ -92,6 +94,7 @@ export default function Modal({ isOpen, aoFechar, aoCardCadastrado }: ModalProps
                 <option value="120 minutos">2 horas</option>
               </select>
               <select
+              value={dificuldade}
                 className="flex m-auto rounded-md py-1 mb-2 focus:outline-none"
                 name=""
                 id=""

@@ -15,19 +15,14 @@ export default function Home() {
 
   const adicionarCard = (card: ICard) => {
     setCards([...cards, card])
+    console.log(card)
   }
 
-  const moveToCompleted = (taskId: string) => {
-    setCompletedCards(prevCompletedCards => prevCompletedCards.filter(card => card.id !== taskId));
-  };
+  const concluir = (id: string) => {
+    setCards(prevCards => prevCards.map(card => card.id === id ? {...card, concluido: true} : card))
+    setCompletedCards([...completedCards, ])
+  }
 
-  const handleComplete = (taskId: string) => {
-    setCards(prevCard =>
-      prevCard.map(card =>
-        card.id === taskId ? { ...card, completed: true } : card
-      )
-    );
-  };
 
   function fechaModal() {
     setOpenModal(!openModal);
@@ -45,8 +40,8 @@ export default function Home() {
     <Pagina>
       <>
         <Header />
-        <Tarefas abrir={abrirModal} cards={cards} onComplete={handleComplete} onMoveToCompleted={moveToCompleted}/>
-        <TarefasConcluidas abrir={abrirModal} cards={completedCards}  onComplete={handleComplete} onMoveToCompleted={moveToCompleted}/>
+        <Tarefas abrir={abrirModal} cards={cards} concluir={concluir}/>
+        <TarefasConcluidas abrir={abrirModal} cards={cards} concluir={concluir}/>
         <Modal isOpen={openModal} aoFechar={fechaModal} aoCardCadastrado={card => adicionarCard(card)} />
         <ModalCard isOpen={openModalCard} aoFechar={fechaModalCard} />
         <button

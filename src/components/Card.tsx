@@ -8,12 +8,10 @@ import {
 interface CardProps{
     onClick: () => void
     card: ICard
-    completed: boolean
-    onMoveToCompleted: (card:string) => void
-    onComplete: (card: string) => void
+    concluir: (id: string) => void
   }
 
-export default function Card({ card, onClick, onComplete, onMoveToCompleted }: CardProps) {
+export default function Card({ card, onClick, concluir }: CardProps) {
   
   return (
     <div
@@ -36,7 +34,7 @@ export default function Card({ card, onClick, onComplete, onMoveToCompleted }: C
         </div>
       </div>
       <div className="flex flex-col h-full items-center justify-center p-2 w-[20%]"
-            onClick={() => onComplete(card.id)}
+          onClick={() => concluir(card.id)}
             >
         <AiOutlineCheck size={25} className="text-blue-600" />
       </div>
